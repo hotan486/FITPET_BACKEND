@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
 const RoomSchema = new Schema({
   loadingId: String, // 숙소아이디
@@ -6,7 +6,7 @@ const RoomSchema = new Schema({
   breakfastCheck: Boolean, // 조식 여부
   freeReservationCancelCheck: Boolean, // 무료예약취소 여부
   maximumPeople: Number, // 최대몇명
-  pocketpupNumber: Number, // 소형견 몇마리
+  pocketPupNumber: Number, // 소형견 몇마리
   roomCheckIn: String,  // 객실 체크인
   roomCheckOut: String, // 객실 체크아웃
   roomPrice: Number, // 객실가격

@@ -8,17 +8,16 @@ import jwtMiddleware from './lib/jwtMiddleware';
 import serve from 'koa-static';
 import mount from 'koa-mount';
 
-const { PORT, MONGO_URI } = process.env;
+const {PORT, MONGO_URI} = process.env;
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch(e => {
-    console.error(e);
-  });
-
+.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch(e => {
+  console.error(e);
+});
 
 import api from './api';
 
@@ -35,13 +34,12 @@ app.use(jwtMiddleware);
 // app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
 
-app.use( mount( '/public', serve('./public') ) ) ;
-app.use( router.middleware())
-
+app.use(mount('/public', serve('./public')));
+app.use(router.middleware())
 
 // PORT 가 지정되어있지 않다면 61010 을 사용
 const port = PORT || 61010;
 
 app.listen(port, () => {
-    console.log('http 서버 오픈 %d', port);
+  console.log('http 서버 오픈 %d', port);
 });

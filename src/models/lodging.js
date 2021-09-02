@@ -1,13 +1,13 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
 const LodgingSchema = new Schema({
-  lodgignName: String,  // 숙소이름
-  lodgingEnName : String, // 숙소 영어이름
+  lodgingName: String,  // 숙소이름
+  lodgingEnName: String, // 숙소 영어이름
   lodgingType: String,    // 종류(호텔, 모텔)
   lodgingTypeKr: String,  // 종류 - 한글이름
   lodgingStar: Number,    // 별점
   lodgingClass: String,   // 몇성급인지(1,2,3,4,5)
-  lodginSubDescription: String, // 서브 설명
+  lodgingSubDescription: String, // 서브 설명
   lodgingMinMoney: Number, // 최소금액
   lodgingMaxMoney: Number, // 최대금액
   lodgingImg: String,   // 숙소 이미지
@@ -35,20 +35,19 @@ const LodgingSchema = new Schema({
 });
 
 const LodgingListSchema = new Schema({
-  lodgins: [
-      {
-          type: String,
-          ref: 'Lodging',
-      },
+  lodgings: [
+    {
+      type: String,
+      ref: 'Lodging',
+    },
   ],
 });
 
 const Lodging = mongoose.model('Lodging', LodgingSchema);
 
 export const LodgingList = mongoose.model(
-  'LodgingList',
-  LodgingListSchema,
+    'LodgingList',
+    LodgingListSchema,
 );
-
 
 export default Lodging;
