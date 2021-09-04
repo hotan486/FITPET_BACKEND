@@ -98,10 +98,53 @@ export const list = async (ctx) => {
     region = '';
   }
 
-  // 쿼리
-  let query;
+  // 호텔 성급
+  let lodgingClass = ctx.query.lodgingClass;
+  if (lodgingClass === undefined) {
+    lodgingClass = '';
+  }
+
+  // 셀렉트 쿼리
+  let query = {}
   if (region) {
-    query = {"region": {$in: [region]}};
+    query.region = {$in: [region]};
+    // {"region": {$in: [region]}};
+  }
+
+  // 호텔 성급 검색
+  if(lodgingClass) {
+
+    const hotelGradeList = lodgingClass.split(',');
+
+    // 검색 성급
+    let searchLodgingClassList = [];
+    hotelGradeList.forEach(item => {
+      searchLodgingClassList.push(item + "성급");
+    });
+
+    query.lodgingClass = {$in: searchLodgingClassList};
+    
+  }
+
+  // 평점,별점
+  let lodgingStar = ctx.query.lodgingStar;
+  if (lodgingStar === undefined) {
+    lodgingStar = '';
+  }
+
+  if(lodgingStar) {
+
+    const lodgingStarList = lodgingStar.split(',');
+
+    // 검색 평점
+    let searchLodgingStarList = [];
+    lodgingStarList.forEach(item => {
+      searchLodgingStarList.push(Number(item));
+    });
+
+
+    query.lodgingStar = {$in: searchLodgingStarList};
+
   }
 
   // 정렬
