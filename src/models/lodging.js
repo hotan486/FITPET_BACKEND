@@ -11,7 +11,12 @@ const LodgingSchema = new Schema({
   lodgingMinMoney: Number, // 최소금액
   lodgingMaxMoney: Number, // 최대금액
   lodgingImg: String,   // 숙소 이미지
-  lodgingLocation: String,  // 숙소위치
+  lodgingImg2: String,  // 숙소이미지2
+  lodgingImg3: String,  // 숙소이미지3
+  lodgingImg4: String,  // 숙소이미지4
+  lodgingMainImg: String, // 숙소메인이미지
+  lodgingLocation: String,  // 숙소위치 상세
+  lodgingLocationSmall: String, // 숙소위치 지역
   lodgingCheckIn: String,  // 숙소 체크인
   lodgingCheckOut: String, // 숙소 체크아웃
   lodgingFloor: Number, // 숙소 층 수
