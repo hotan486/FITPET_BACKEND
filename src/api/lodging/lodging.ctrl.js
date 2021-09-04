@@ -92,11 +92,30 @@ export const list = async (ctx) => {
     query = {"region": {$in: [region]}};
   }
 
+  // 정렬
+  let selectSort = ctx.query.selectSort;
+  if(selectSort === undefined) {
+    selectSort = '';
+  }
+
+  // 정렬쿼리
+  let sortQuery;
+  if (selectSort) {
+
+    if(selectSort === 'moneyDesc') {
+      sortQuery = {"lodgingMinMoney": -1 };
+    } else if(selectSort === 'moneyAsc') {
+      sortQuery = {"lodgingMinMoney": 1 };
+    }
+
+  }
+
   try {
 
     const lodgings = await Lodging.find(query)
-    .limit(displayLabelCount)
-    .skip(page === 1 ? 0 : (page - 1) * 6 - 1)
+    .sort(sortQuery)
+    //.limit(displayLabelCount)
+    //.skip(page === 1 ? 0 : (page - 1) * 6 - 1)
     .lean()
     .exec();
 
