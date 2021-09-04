@@ -26,7 +26,8 @@ export const register = async (ctx) => {
     lodgingRoomNum,
     lodgingNumber,
     lodgingFaxNumber,
-    options
+    options,
+    region,
   } = ctx.request.body;
 
   const lodging = new Lodging({
@@ -64,7 +65,8 @@ export const register = async (ctx) => {
       freeParking: options.freeParking,
       reception24Hour: options.reception24Hour,
       hitsNumber: options.hitsNumber,
-    }
+    },
+    region,
   });
 
   await lodging.save(); // 데이터베이스에 저장
