@@ -3,9 +3,10 @@ import mongoose, {Schema} from 'mongoose';
 const RentalCarsSchema = new Schema({
   carType: String,            // 차 종류
   carName: String,            // 차 이름
-  price: Number,              // 차 가격
+  minPrice: Number,              // 최소 차 가격
+  maxPrice: Number,              // 최대 차 가격
   sales: Number,              // 세일 가격
-  dibs: Number,               //
+  dibs: Number,               // 찜 수
   picture: String,            // 차 이미지 경로
   isRented: Number,           // 렌트 수
   isNewCheck: Number,         // 신차 수

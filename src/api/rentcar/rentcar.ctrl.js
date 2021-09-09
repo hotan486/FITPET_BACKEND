@@ -9,7 +9,8 @@ export const register = async (ctx) => {
   const {
     carType,
     carName,
-    price,
+    minPrice,
+    maxPrice,
     sales,
     dibs,
     picture,
@@ -25,7 +26,8 @@ export const register = async (ctx) => {
   const rentcars = new RentCars({
     carType,
     carName,
-    price,
+    minPrice,
+    maxPrice,
     sales,
     dibs,
     picture,
