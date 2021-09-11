@@ -169,8 +169,8 @@ export const list = async (ctx) => {
 
     const lodgings = await Lodging.find(query)
     .sort(sortQuery)
-    //.limit(displayLabelCount)
-    //.skip(page === 1 ? 0 : (page - 1) * 6 - 1)
+    .limit(displayLabelCount)
+    .skip(page === 1 ? 0 : (page - 1) * 6 - 1)
     .lean()
     .exec();
 
