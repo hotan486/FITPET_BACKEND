@@ -97,6 +97,29 @@ export const list = async (ctx) => {
 };
 
 /*
+    렌트카 종류로 읽기
+    GET /api/rentcar/list/:kind
+*/
+export const listRead = async (ctx) => {
+  const {kind} = ctx.params;
+  try {
+
+    const rentcar = await RentCars.find().where('carType').equals(kind);
+
+    // 숙소 존재하지 않을 때
+    if (!rentcar) {
+      ctx.throw(400, {message: "숙소정보가 존재하지않습니다."});
+      return;
+    }
+    ctx.status = 200;
+    ctx.body = rentcar;
+  } catch (e) {
+    ctx.throw(500, e);
+  }
+};
+
+
+/*
     렌트카 읽기
     GET /api/rentcar/:id
 */
