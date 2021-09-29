@@ -49,7 +49,6 @@ export const register = async (ctx) => {
 
 }
 
-
 /*
     렌트카 불러오기
     GET /api/rentcar/list
@@ -98,7 +97,7 @@ export const list = async (ctx) => {
 
 /*
     렌트카 종류로 읽기
-    GET /api/rentcar/list/:kind
+    GET /api/rentcar/listRead/:kind
 */
 export const listRead = async (ctx) => {
   const {kind} = ctx.params;
@@ -118,7 +117,6 @@ export const listRead = async (ctx) => {
   }
 };
 
-
 /*
     렌트카 읽기
     GET /api/rentcar/:id
@@ -131,7 +129,7 @@ export const read = async (ctx) => {
 
     // 숙소 존재하지 않을 때
     if (!rentcar) {
-      ctx.throw(400, {message: "숙소정보가 존재하지않습니다."});
+      ctx.throw(400, {message: "렌트카 정보가 존재하지않습니다."});
       return;
     }
     ctx.status = 200;
