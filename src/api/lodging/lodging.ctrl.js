@@ -1,72 +1,71 @@
 import Lodging from '../../models/lodging';
 
+// 숙소등록
 export const register = async (ctx) => {
   console.log("register");
 
   const {
-    lodgingName,
-    lodgingEnName,
-    lodgingType,
-    lodgingTypeKr,
-    lodgingStar,
-    lodgingClass,
-    lodgingSubDescription,
-    lodgingMinMoney,
-    lodgingMaxMoney,
-    lodgingImg,
-    lodgingImg2,
-    lodgingImg3,
-    lodgingImg4,
-    lodgingMainImg,
-    lodgingLocation,
-    lodgingLocationSmall,
-    lodgingCheckIn,
-    lodgingCheckOut,
-    lodgingFloor,
-    lodgingRoomNum,
-    lodgingNumber,
-    lodgingFaxNumber,
-    options,
-    region,
+    lodgingType, // 숙소 유형,종류
+    lodgignName,  // 숙소이름
+    lodgingEnName, // 숙소 영어이름
+    lodgingStar,    // 별점
+    lodgingClass,   // 몇성급인지(1,2,3,4,5)
+    lodginSubDescription, // 서브 설명
+    lodgingLocation,  // 숙소위치
+
+    //lodgingMainImg, // 숙소 대표 이미지
+    //lodgingImgs, // 숙소 상세 이미지
+    //lodgingSlideImg, // 숙소 슬라이드 이미지
+    //lodgingPopularityImg, // 인기 숙소 이미지
+
+    options, // 옵션
   } = ctx.request.body;
 
   const lodging = new Lodging({
-    lodgingName,
-    lodgingEnName,
-    lodgingType,
-    lodgingTypeKr,
-    lodgingStar,
-    lodgingClass,
-    lodgingSubDescription,
-    lodgingMinMoney,
-    lodgingMaxMoney,
-    lodgingImg,
-    lodgingImg2,
-    lodgingImg3,
-    lodgingImg4,
-    lodgingMainImg,
-    lodgingLocation,
-    lodgingLocationSmall,
-    lodgingCheckIn,
-    lodgingCheckOut,
-    lodgingFloor,
-    lodgingRoomNum,
-    lodgingNumber,
-    lodgingFaxNumber,
+    lodgingType, // 숙소 유형,종류
+    lodgignName,  // 숙소이름
+    lodgingEnName, // 숙소 영어이름
+    lodgingStar,    // 별점
+    lodgingClass,   // 몇성급인지(1,2,3,4,5)
+    lodginSubDescription, // 서브 설명
+    lodgingLocation,  // 숙소위치
+    //lodgingMainImg, // 숙소 대표 이미지
+    //lodgingImgs, // 숙소 상세 이미지
+    //lodgingSlideImg, // 숙소 슬라이드 이미지
+    //lodgingPopularityImg, // 인기 숙소 이미지
+
     options: {
-      smallDog: options.smallDog,
-      middleDong: options.middleDong,
-      companionAnimalWith: options.companionAnimalWith,
-      companionAnimalPlayground: options.companionAnimalPlayground,
-      companionAnimalPool: options.companionAnimalPool,
-      wifi: options.wifi,
-      fitness: options.fitness,
-      pool: options.pool,
-      freeParking: options.freeParking,
-      reception24Hour: options.reception24Hour,
-      hitsNumber: options.hitsNumber,
+      smallDogYN: options.smallDogYN,    // 소형견 여부
+      middleDongYN: options.middleDongYN,  // 중형견 여부
+      bigDogYN: options.bigDogYN, // 대형견 여부
+      catYN: options.catYN, // 고양이 여부
+      dryRoomYN: options.dryRoomYN, // 드라이룸 여부
+      inPoolYN: options.inPoolYN, // 실내 수영장 여부 
+      petPlaygroundYN: options.petPlaygroundYN, // 애견 운동장
+      selfBathYN: options.selfBathYN, // 셀프목욕
+      petSpaYN: options.petSpaYN, // 애견 스파
+      petShowerYN: options.petShowerYN, // 애견 샤워장
+      petDogPlaygroundYN: options.petDogPlaygroundYN, // 애견 놀이터
+      grassYardYN: options.grassYardYN, // 잔디마당
+      photozoneYN: options.photozoneYN, // 포토존
+      petProductsYN: options.petProductsYN, // 반려동물용품제공
+      petWithYN: options.petWithYN, // 반려동물 동반
+      allDogBreedYN: options.allDogBreedYN, // 모든견종
+      fierceDogOffLimitsYN: options.fierceDogOffLimitsYN, // 맹견출입금지
+      wifYN: options.wifYN, // 와이파이
+      eachBarbecueYN: options.eachBarbecueYN, // 개별 바베큐
+      cafeYN: options.cafeYN, // 카페여부
+      restaurantYN: options.restaurantYN, // 레스토랑 여부
+      cookingYN: options.cookingYN, // 취사가능
+      baggageStorageYN: options.baggageStorageYN, // 수하물 보관
+      reception24HourYN: options.reception24HourYN, // 24시리셉션
+      fitnessYN: options.fitnessYN, // 피트니스 센터
+      spaYN: options.spaYN, // 스파 여부
+      laundryYN: options.laundryYN, // 세탁 여부
+      poolYN: options.poolYN, // 수영장 여부
+      businessFacilitiesYN: options.businessFacilitiesYN, // 비즈니스 시설
+      facilitiesforTheDisabledYN: options.facilitiesforTheDisabledYN, // 장애인 편의시설
     },
-    region,
   });
 
   await lodging.save(); // 데이터베이스에 저장
@@ -146,6 +145,80 @@ export const list = async (ctx) => {
     query.lodgingStar = {$in: searchLodgingStarList};
 
   }
+
+  // 숙소타입
+  let lodgingType = ctx.query.lodgingType;
+  if(lodgingType === undefined) {
+    lodgingType = '';
+  }
+
+  if(lodgingType) {
+    query.lodgingType = {$in: lodgingType};
+  }
+
+  // 시작날짜
+  let startDt = ctx.query.startDt;
+  if(startDt === undefined) {
+    startDt = '';
+  }
+
+  // 종료날짜
+  let endDt = ctx.query.endDt;
+  if(endDt === undefined) {
+    endDt = '';
+  }
+
+
+  //////////
+  // 인원선택
+
+  // 객실수
+  let room = ctx.query.room;
+  if(room === undefined) {
+    room = '';
+  }
+
+  // 성인
+  let adult = ctx.query.adult;
+  if(adult === undefined) {
+    adult = '';
+  }
+
+
+  // 어린이(만 12세미만)
+  let child = ctx.query.child;
+  if(child === undefined) {
+    child = '';
+  }
+
+  // 소형견
+  let smallSizedDogs = ctx.query.smallSizedDogs;
+  if(smallSizedDogs === undefined) {
+    smallSizedDogs = '';
+  }
+
+  // 중형견
+  let mediumSizedDogs = ctx.query.mediumSizedDogs;
+  if(mediumSizedDogs === undefined) {
+    mediumSizedDogs = '';
+  }
+
+  // 대형견
+  let bigSizedDogs = ctx.query.bigSizedDogs;
+  if(bigSizedDogs === undefined) {
+    bigSizedDogs = '';
+  }
+
+  // 고양이
+  let cats = ctx.query.cats;
+  if(cats === undefined) {
+    cats = '';
+  }
+
+
+  // 인원선택
+  /////////
+
 
   // 정렬
   let selectSort = ctx.query.selectSort;
