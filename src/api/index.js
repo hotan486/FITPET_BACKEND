@@ -1,8 +1,8 @@
 import Router from 'koa-router';
-import auth from './auth';
-import lodging from './lodging';
-import room from './room';
-import rentcar from './rentcar';
+import auth from './auth/index.js';
+import lodging from './lodging/index.js';
+import room from './room/index.js';
+import rentcar from './rentcar/index.js';
 
 const api = new Router();
 

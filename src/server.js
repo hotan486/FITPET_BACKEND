@@ -3,7 +3,7 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
-import jwtMiddleware from './lib/jwtMiddleware';
+import jwtMiddleware from './lib/jwtMiddleware.js';
 
 import serve from 'koa-static';
 import mount from 'koa-mount';
@@ -19,7 +19,7 @@ mongoose
   console.error(e);
 });
 
-import api from './api';
+import api from './api/index.js';
 
 const app = new Koa();
 const router = new Router();
