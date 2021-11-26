@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import * as roomCtrl from './room.ctrl';
+import * as roomCtrl from './room.ctrl.js';
 
 const room = new Router();
 

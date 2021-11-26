@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import * as rentCarCtrl from './rentcar.ctrl';
+import * as rentCarCtrl from './rentcar.ctrl.js';
 
 const rentcar = new Router();
 

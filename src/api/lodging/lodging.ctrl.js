@@ -1,4 +1,4 @@
-import {Lodging} from '../../models/lodging';
+import {Lodging} from '../../models/lodging.js';
 
 // 숙소등록
 export const register = async (ctx) => {

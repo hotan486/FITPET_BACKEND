@@ -1,4 +1,4 @@
-import RentCars from '../../models/rentalCars';
+import RentCars from '../../models/rentalCars.js';
 /*
     렌트카 등록하기
     POST /api/rentcar/register

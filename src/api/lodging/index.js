@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import * as lodgingCtrl from './lodging.ctrl';
+import * as lodgingCtrl from './lodging.ctrl.js';
 
 const lodging = new Router();
 

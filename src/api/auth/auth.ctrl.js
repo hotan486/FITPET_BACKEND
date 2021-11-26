@@ -1,4 +1,4 @@
-import User from '../../models/user';
+import User from '../../models/user.js';
 import Joi from 'joi';
 
 export const join = async (ctx) => {

@@ -1,4 +1,4 @@
-import Room from '../../models/room';
+import Room from '../../models/room.js';
 
 /*
     객실 등록하기
