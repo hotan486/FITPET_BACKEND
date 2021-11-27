@@ -1,4 +1,6 @@
-import mongoose, {Schema} from 'mongoose';
+import mongoose from 'mongoose';
+
+const {Schema} = mongoose;
 
 const RentalCarsSchema = new Schema({
   carType: String,            // 차 종류

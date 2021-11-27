@@ -1,4 +1,6 @@
-import mongoose, {Schema} from 'mongoose';
+import mongoose from 'mongoose';
+
+const {Schema} = mongoose;
 
 const RoomSchema = new Schema({
   loadingId: String, // 숙소아이디

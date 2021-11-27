@@ -1,4 +1,6 @@
-import mongoose, {Schema} from 'mongoose';
+import mongoose from 'mongoose';
+
+const {Schema} = mongoose;
 
 const roomInfoSimple = new Schema({
     room_id: String, // 객실 ID
