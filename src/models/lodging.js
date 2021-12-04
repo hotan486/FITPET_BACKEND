@@ -85,4 +85,4 @@ export const LodgingList = mongoose.model(
     LodgingListSchema,
 );
 
-// export default Lodging;
+export default Lodging;
